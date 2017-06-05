@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20170605071230) do
 
   create_table "students", force: :cascade do |t|
     t.integer  "student_id"
-    t.integer  "department"
+    t.string   "department"
     t.integer  "maths"
     t.integer  "physics"
     t.integer  "chemistry"
