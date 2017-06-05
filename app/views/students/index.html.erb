@@ -2,10 +2,11 @@
 <hr>
 
 <div align="center">
+
   <% if @student_list.empty?%>
       <b>No students available</b>
   <% else %>
-      <table border="2">
+      <table border="1" cellpadding="9" cellspacing="4">
         <tr>
           <td><b>Student id</b></td>
           <td><b>Department</b></td>
@@ -13,6 +14,7 @@
           <td><b>Physics</b></td>
           <td><b>Chemistry</b></td>
           <td><b>Year</b></td>
+          <td colspan="3"> <b>Actions</b></td>
         </tr>
         <% @student_list.each do |student| %>
             <tr>
