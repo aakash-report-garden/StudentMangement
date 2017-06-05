@@ -22,8 +22,12 @@
               <td><%= student.physics %></td>
               <td><%= student.chemistry %></td>
               <td><%= student.year %></td>
+              <td><%= link_to 'View', student_path(student), method: 'get' %></td>
+              <td><%= link_to 'Update', edit_student_path(student) %></td>
+              <td><%= link_to 'Delete', student_path(student), method: 'delete' %></td>
             </tr>
         <% end %>
       </table>
   <% end %>
 </div>
+<%= link_to 'Add new Student', new_student_path %>
