@@ -1,0 +1,26 @@
+<h1>Edit College Data</h1>
+<hr>
+<% @college.errors.full_messages.each do |error| %>
+    <ul>
+      <li><%= error %></li>
+    </ul>
+<% end %>
+<%= form_for :college, url: college_path, method: 'put' do |f| %>
+
+    <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+
+    <div class="field">
+      <%= f.label :established_year %>
+      <%= f.text_field :established_year %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>
+
+<hr>.
+<%= link_to 'Back', colleges_path %>

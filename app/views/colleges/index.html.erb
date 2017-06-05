@@ -1,0 +1,28 @@
+<h1><center>Colleges List Page</center></h1>
+<div align="right"><%= link_to 'Home Page', root_path %></div>
+<hr>
+
+<div align="center">
+
+  <% if @college_list.empty?%>
+      <b>No colleges available</b>
+  <% else %>
+      <table border="1" cellpadding="9" cellspacing="4">
+        <tr>
+          <td><b>Name</b></td>
+          <td><b>Established Date</b></td>
+          <td colspan="3"> <b>Actions</b></td>
+        </tr>
+        <% @college_list.each do |college| %>
+            <tr>
+              <td><%= college.name %></td>
+              <td><%= college.established_year %></td>
+              <td><%= link_to 'View', college_path(college), method: 'get' %></td>
+              <td><%= link_to 'Update', edit_college_path(college) %></td>
+              <td><%= link_to 'Delete', college_path(college), method: 'delete' %></td>
+            </tr>
+        <% end %>
+      </table>
+  <% end %>
+</div>
+<%= link_to 'Add new College', new_college_path %>
