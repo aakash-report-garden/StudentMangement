@@ -61,3 +61,26 @@ Student.create!(
         }
     ]
 )
+
+# Clearing existing college data and creating initial data
+College.destroy_all
+
+College.create!(
+    [
+        {
+            name: 'KIIT',
+            established_year: 1889,
+
+        },
+        {
+            name: 'VIT',
+            established_year: 1999,
+
+        },
+        {
+            name: 'IIT',
+            established_year: 1880,
+
+        }
+    ]
+)
