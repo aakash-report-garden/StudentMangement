@@ -10,21 +10,25 @@
       <table border="1" cellpadding="9" cellspacing="4">
         <tr>
           <td><b>Student id</b></td>
+          <td><b>Extended Sid</b></td>
           <td><b>Department</b></td>
           <td><b>Maths</b></td>
           <td><b>Physics</b></td>
           <td><b>Chemistry</b></td>
           <td><b>Year</b></td>
+          <td><b>College</b></td>
           <td colspan="3"> <b>Actions</b></td>
         </tr>
         <% @student_list.each do |student| %>
             <tr>
               <td><%= student.student_id %></td>
+              <td><%= student.extended_sid %></td>
               <td><%= student.department %></td>
               <td><%= student.maths %></td>
               <td><%= student.physics %></td>
               <td><%= student.chemistry %></td>
               <td><%= student.year %></td>
+              <td><%= student.college.name %></td>
               <td><%= link_to 'View', student_path(student), method: 'get' %></td>
               <td><%= link_to 'Update', edit_student_path(student) %></td>
               <td><%= link_to 'Delete', student_path(student), method: 'delete' %></td>
