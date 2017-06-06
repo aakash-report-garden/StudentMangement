@@ -9,7 +9,7 @@ class CollegesController < ApplicationController
   end
 
   def show
-    @college = College.find(params[:id])
+    @college = College.find_by_id(params[:id]) or not_found
   end
 
   def create
@@ -22,11 +22,11 @@ class CollegesController < ApplicationController
   end
 
   def edit
-    @college = College.find(params[:id])
+    @college = College.find_by_id(params[:id]) or not_found
   end
 
   def update
-    @college = College.find(params[:id])
+    @college = College.find_by_id(params[:id]) or not_found
     if @college.update(college_param)
       redirect_to colleges_path
     else
@@ -35,7 +35,7 @@ class CollegesController < ApplicationController
   end
 
   def destroy
-    @college = College.find(params[:id])
+    @college = College.find_by_id(params[:id]) or not_found
     @college.destroy
     redirect_to colleges_path
   end

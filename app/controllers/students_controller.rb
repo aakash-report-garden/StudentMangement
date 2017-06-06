@@ -9,7 +9,7 @@ class StudentsController < ApplicationController
   end
 
   def show
-    @student = Student.find(params[:id])
+    @student = Student.find_by_id(params[:id]) or not_found
   end
 
   def create
@@ -22,11 +22,11 @@ class StudentsController < ApplicationController
   end
 
   def edit
-    @student = Student.find(params[:id])
+    @student = Student.find_by_id(params[:id]) or not_found
   end
 
   def update
-    @student = Student.find(params[:id])
+    @student = Student.find_by_id(params[:id]) or not_found
     if @student.update(student_params)
       redirect_to students_path
     else
@@ -35,7 +35,7 @@ class StudentsController < ApplicationController
   end
 
   def destroy
-    @student = Student.find(params[:id])
+    @student = Student.find_by_id(params[:id]) or not_found
     @student.destroy
     redirect_to students_path
   end
