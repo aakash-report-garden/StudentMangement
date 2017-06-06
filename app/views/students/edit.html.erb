@@ -36,6 +36,11 @@
       <%= f.text_field :year %>
     </div>
 
+    <div class="field">
+      <%= f.label :college_id %>
+      <%= collection_select(:student, :college_id, College.all, :id, :name) %>
+    </div>
+
     <div class="actions">
       <%= f.submit %>
     </div>

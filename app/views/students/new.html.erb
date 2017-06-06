@@ -36,6 +36,11 @@
       <%= f.text_field :year %>
     </div>
 
+    <div class="field">
+      <%= f.label :college %>
+      <%= f.select :college_id, options_for_select(College.all.map{|college| [college.name, college.id]}) %>
+    </div>
+
     <div class="actions">
       <%= f.submit %>
     </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170605113442) do
+ActiveRecord::Schema.define(version: 20170606053158) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,8 +29,12 @@ ActiveRecord::Schema.define(version: 20170605113442) do
     t.integer  "physics"
     t.integer  "chemistry"
     t.integer  "year"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "college_id"
+    t.string   "extended_sid"
+    t.index ["college_id"], name: "index_students_on_college_id", using: :btree
   end
 
+  add_foreign_key "students", "colleges"
 end
