@@ -1,7 +1,7 @@
 class StudentsController < ApplicationController
 
   def index
-    @student_list = Student.all
+    @student_list = Student.all.order(student_id: :asc)
   end
 
   def new

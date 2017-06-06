@@ -40,6 +40,17 @@ class CollegesController < ApplicationController
     redirect_to colleges_path
   end
 
+  def enrollment
+    @college_list = College.all
+  end
+
+  def search
+    @colleges = College.none
+    if request.post?
+      @colleges = College.where("lower(name) LIKE ?", "%#{params[:search_query].downcase}%")
+    end
+  end
+
   private
   def college_param
     params.require(:college).permit(:name, :established_year)
