@@ -1,0 +1,29 @@
+<center>
+  <h1>Search Colleges</h1>
+  <hr>
+  <form method="post" action="<%= colleges_search_path %>">
+    <input type="hidden" value="<%= form_authenticity_token() %>" name="authenticity_token"/>
+    <input type="text" name="search_query">
+    <input type="submit" value="Search Colleges">
+  </form>
+  <hr>
+  <% if @colleges.empty? %>
+      <h2>No colleges found.</h2>
+  <% else %>
+    <table border="1" cellpadding="3" cellspacing="3">
+      <tr>
+        <td><b>College Name</b></td>
+        <td><b>Established Year</b></td>
+      </tr>
+      <% @colleges.each do |college| %>
+      <tr>
+        <td><%=link_to college.name, college_path(college.id) %></td>
+        <td><%= college.established_year %></td>
+      </tr>
+      <% end %>
+    </table>
+  <% end %>
+
+</center>
+
+<%= link_to 'Back', root_path %>

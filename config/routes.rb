@@ -1,3 +1,10 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root 'students#home'
+
+  resources :students
+  get 'colleges/search', to: 'colleges#search'
+  post 'colleges/search', to: 'colleges#search'
+  resources :colleges
+
+  get 'enrollment', to: 'colleges#enrollment'
 end

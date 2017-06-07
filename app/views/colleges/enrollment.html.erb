@@ -1,0 +1,21 @@
+<center>
+  <h1>Enrollment Status</h1>
+  <hr>
+
+  <table border="1" cellspacing="3" cellpadding="3">
+    <tr>
+      <td><b>College Name</b></td>
+      <td><b>Student id</b></td>
+    </tr>
+    <% @college_list.each do |college| %>
+        <% college.students.each do |student| %>
+            <tr>
+              <td><%= college.name %></td>
+              <td><%= student.student_id %></td>
+        <% end %>
+    <% end %>
+    </tr>
+  </table>
+</center>
+<hr>
+<%= link_to 'Back', root_path %>
