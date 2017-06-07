@@ -1,3 +1,29 @@
+# Clearing existing college data and creating initial data
+College.destroy_all
+
+College.create!(
+    [
+        {
+            id: 1,
+            name: 'KIIT',
+            established_year: 1889,
+
+        },
+        {
+            id: 2,
+            name: 'VIT',
+            established_year: 1999,
+
+        },
+        {
+            id: 3,
+            name: 'IIT',
+            established_year: 1880,
+
+        }
+    ]
+)
+
 # Clearing existing student data and creating initial data
 Student.destroy_all
 
@@ -9,7 +35,8 @@ Student.create!(
             maths: 43,
             physics: 54,
             chemistry: 65,
-            year: 2016
+            year: 2016,
+            college_id: 1
         },
         {
             student_id: 2,
@@ -17,7 +44,8 @@ Student.create!(
             maths: 66,
             physics: 52,
             chemistry: 66,
-            year: 2016
+            year: 2016,
+            college_id: 1
         },
         {
             student_id: 3,
@@ -25,7 +53,8 @@ Student.create!(
             maths: 87,
             physics: 32,
             chemistry: 43,
-            year: 2016
+            year: 2016,
+            college_id: 1
         },
         {
             student_id: 1,
@@ -33,7 +62,8 @@ Student.create!(
             maths: 21,
             physics: 52,
             chemistry: 65,
-            year: 2015
+            year: 2015,
+            college_id: 1
         },
         {
             student_id: 2,
@@ -41,7 +71,8 @@ Student.create!(
             maths: 68,
             physics: 50,
             chemistry: 65,
-            year: 2015
+            year: 2015,
+            college_id: 1
         },
         {
             student_id: 3,
@@ -49,7 +80,8 @@ Student.create!(
             maths: 85,
             physics: 22,
             chemistry: 43,
-            year: 2015
+            year: 2015,
+            college_id: 1
         },
         {
             student_id: 4,
@@ -57,30 +89,8 @@ Student.create!(
             maths: 21,
             physics: 22,
             chemistry: 13,
-            year: 2016
-        }
-    ]
-)
-
-# Clearing existing college data and creating initial data
-College.destroy_all
-
-College.create!(
-    [
-        {
-            name: 'KIIT',
-            established_year: 1889,
-
-        },
-        {
-            name: 'VIT',
-            established_year: 1999,
-
-        },
-        {
-            name: 'IIT',
-            established_year: 1880,
-
+            year: 2016,
+            college_id: 1
         }
     ]
 )

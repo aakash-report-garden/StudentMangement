@@ -1,8 +1,10 @@
 <h1>Add New Student</h1>
 <hr>
-<% @student.errors.full_messages.each do |error| %>
+<% if flash[:alert] %>
     <ul>
+      <% flash[:alert]['form_errors'].each do |error| %>
       <li><%= error %></li>
+      <% end %>
     </ul>
 <% end %>
 <%= form_for :student, url: students_path do |f| %>

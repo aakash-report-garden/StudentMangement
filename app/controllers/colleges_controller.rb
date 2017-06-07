@@ -9,7 +9,7 @@ class CollegesController < ApplicationController
   end
 
   def show
-    @college = College.find_by_id(params[:id]) or not_found
+    @college = College.find(params[:id])
   end
 
   def create
@@ -17,31 +17,34 @@ class CollegesController < ApplicationController
     if @college.save
       redirect_to colleges_path
     else
-      render 'new'
+      flash[:alert] = {'form_errors' => @college.errors.full_messages}
+      redirect_to action: 'new'
     end
   end
 
   def edit
-    @college = College.find_by_id(params[:id]) or not_found
+    @college = College.find(params[:id])
   end
 
   def update
-    @college = College.find_by_id(params[:id]) or not_found
+    @college = College.find(params[:id])
     if @college.update(college_param)
+      flash[:notice] = 'College\'s data updated!'
       redirect_to colleges_path
     else
-      render 'edit'
+      flash[:alert] = {'form_errors' => @college.errors.full_messages}
+      redirect_to action: 'edit'
     end
   end
 
   def destroy
-    @college = College.find_by_id(params[:id]) or not_found
+    @college = College.find(params[:id])
     @college.destroy
     redirect_to colleges_path
   end
 
   def enrollment
-    @college_list = College.all
+    @college_list = College.all.includes(:students) # Eager loading
   end
 
   def search

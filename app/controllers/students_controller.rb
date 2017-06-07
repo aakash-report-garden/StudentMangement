@@ -1,7 +1,7 @@
 class StudentsController < ApplicationController
 
   def index
-    @student_list = Student.all.order(student_id: :asc)
+    @student_list = Student.all.includes(:college).order(student_id: :asc)
   end
 
   def new
@@ -9,7 +9,7 @@ class StudentsController < ApplicationController
   end
 
   def show
-    @student = Student.find_by_id(params[:id]) or not_found
+    @student = Student.find(params[:id])
   end
 
   def create
@@ -17,26 +17,30 @@ class StudentsController < ApplicationController
     if @student.save
       redirect_to students_path
     else
-      render 'new'
+      flash[:alert] = {'form_errors' => @student.errors.full_messages}
+      redirect_to action: 'new'
     end
   end
 
   def edit
-    @student = Student.find_by_id(params[:id]) or not_found
+    @student = Student.find(params[:id])
   end
 
   def update
-    @student = Student.find_by_id(params[:id]) or not_found
+    @student = Student.find(params[:id])
     if @student.update(student_params)
+      flash[:notice] = 'Student\'s data Updated'
       redirect_to students_path
     else
-      render 'edit'
+      flash[:alert] = {'form_errors' => @student.errors.full_messages}
+      redirect_to action: 'edit'
     end
   end
 
   def destroy
-    @student = Student.find_by_id(params[:id]) or not_found
+    @student = Student.find(params[:id])
     @student.destroy
+    flash[:notice] = "Student Deleted!"
     redirect_to students_path
   end
 

@@ -1,8 +1,10 @@
 <h1>Add New College</h1>
 <hr>
-<% @college.errors.full_messages.each do |error| %>
+<% if flash[:alert] %>
     <ul>
-      <li><%= error %></li>
+      <% flash[:alert]['form_errors'].each do |error| %>
+          <li><%= error %></li>
+      <% end %>
     </ul>
 <% end %>
 <%= form_for :college, url: colleges_path do |f| %>
